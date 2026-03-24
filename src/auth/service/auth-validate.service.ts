@@ -14,6 +14,7 @@ export async function validate(): Promise<boolean | string> {
     if(!res.ok) {
         try {
             await refresh()
+            return await validate()
         } catch (error) {
             return false
         }

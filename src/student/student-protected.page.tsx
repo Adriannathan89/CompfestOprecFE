@@ -4,7 +4,8 @@ import { useAuthValidation } from "../auth/auth.hooks"
 export default function StudentProtectedPage() {
     const { studentValidated, loading } = useAuthValidation()
 
-    if(loading) return <p>Loading...</p>
+    console.log(studentValidated)
+    if(loading || studentValidated === null) return <p>Loading...</p>
 
     return studentValidated ? <Outlet /> : <Navigate to="/login" />
 }

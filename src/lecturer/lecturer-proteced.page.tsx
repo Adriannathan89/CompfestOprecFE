@@ -7,7 +7,7 @@ import Header from "../components/shared/lecuture-header";
 export default function LecturerProtectedPage() {
     const { lecturerValidated, studentValidated, loading } = useAuthValidation()
 
-    if (loading) return <p>Loading...</p>
+    if (loading || lecturerValidated === null) return <p>Loading...</p>
 
     if (studentValidated) {
         toast.error("Anda tidak memiliki akses ke halaman ini")
