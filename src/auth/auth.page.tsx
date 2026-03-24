@@ -9,22 +9,23 @@ export default function AuthPage() {
 
     return (
         <div className="flex w-full h-screen justify-center items-center gap-20">
-            <div className="w-[600px] h-[580px] border-1 shadow-md rounded-xl text-card-foreground p-4">
+            <div className="w-[600px] h-[580px] border-1 border-card-foreground/20 shadow-md rounded-xl text-card-foreground p-4">
                 <p className="text-2xl flex justify-center">{isLogin ? "Login" : "Register"}</p>
-                <form className="h-full flex flex-col gap-[32px] mt-[40px] p-4" onSubmit={handleSubmit}>
+                <form className="h-[520px] flex flex-col p-4 justify-center" onSubmit={handleSubmit}>
+                    <div className="flex flex-col gap-[40px]">
                     <div className="flex flex-col gap-[12px]">
                         <p>Username: </p>
                         <Input
-                            className="h-[40px]"
+                            className="h-[40px] shadow-md border-1 border-t border-card-foreground/20"
                             type="text"
                             name="username"
                             value={form.username}
                             onChange={onChange} />
                     </div>
-                    <div className="flex flex-col gap-[12px]">
+                    <div className="flex flex-col gap-[12px] ">
                         <p>Password: </p>
                         <Input
-                            className="h-[40px]"
+                            className="h-[40px] shadow-md border-1 border-t border-card-foreground/20"
                             type="password"
                             name="password"
                             value={form.password}
@@ -34,17 +35,18 @@ export default function AuthPage() {
                         <div className="flex flex-col gap-[12px]">
                             <p>Ulangi Password: </p>
                             <Input
-                                className="h-[40px]"
+                                className="h-[40px] shadow-md border-1 border-t border-card-foreground/20   "
                                 type="password"
                                 name="confirmPassword"
                                 value={form.confirmPassword}
                                 onChange={onChange} />
                         </div>
                     )}
+                    </div>
                     <Button
                         type="submit"
                         disabled={!form.username || !form.password || (!isLogin && (form.confirmPassword !== form.password))}
-                        className="w-full h-10 bg-sidebar-primary text-primary hover:bg-sidebar-primary/90 mt-6 ">
+                        className="w-full h-10 bg-sidebar-primary text-primary-foreground hover:bg-sidebar-primary/90 mt-12 ">
                         {isLogin ? "Login" : "Register"}
                     </Button>
                 </form>
