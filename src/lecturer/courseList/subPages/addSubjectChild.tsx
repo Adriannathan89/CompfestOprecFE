@@ -1,4 +1,4 @@
-export default function AddCourseChild() {
+export default function AddSubjectChild() {
     return (
         <>
         

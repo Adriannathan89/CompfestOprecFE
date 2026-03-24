@@ -5,7 +5,7 @@ import LecturerProtectedPage from './lecturer/lecturer-proteced.page'
 import { Toaster } from 'sonner'
 import LecturerDashboardPage from './lecturer/dashboard/lecturer-dashboard.page'
 import CourseListPage from './lecturer/courseList/courseList.page'
-import AddCourseChild from './lecturer/courseList/subPages/addCourseChild'
+import AddSubjectChild from './lecturer/courseList/subPages/addSubjectChild'
 
 export default function App() {
   return (
@@ -22,7 +22,7 @@ export default function App() {
           <Route path='' element={<LecturerDashboardPage />} index />
 
           <Route path='courses' element={<CourseListPage />}>
-              <Route path='addCourse' element={<AddCourseChild />} />
+              <Route path='addSubject' element={<AddSubjectChild />} />
           </Route>
 
         </Route>
