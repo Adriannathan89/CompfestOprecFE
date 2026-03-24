@@ -6,6 +6,7 @@ import { Toaster } from 'sonner'
 import LecturerDashboardPage from './lecturer/dashboard/lecturer-dashboard.page'
 import CourseListPage from './lecturer/courseList/courseList.page'
 import AddSubjectChild from './lecturer/courseList/subPages/addSubjectChild'
+import AddSubjectPage from './lecturer/addSubject/addSubject.page'
 
 export default function App() {
   return (
@@ -20,9 +21,9 @@ export default function App() {
 
         <Route path='/lecturer' element={<LecturerProtectedPage />}>
           <Route path='' element={<LecturerDashboardPage />} index />
-
+          <Route path='add-subject' element={<AddSubjectPage />} />
           <Route path='courses' element={<CourseListPage />}>
-              <Route path='addSubject' element={<AddSubjectChild />} />
+              <Route path='subjects' element={<AddSubjectChild />} />
           </Route>
 
         </Route>

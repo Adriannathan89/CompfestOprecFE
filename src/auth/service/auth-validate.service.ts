@@ -18,6 +18,7 @@ export async function validate(): Promise<boolean | string> {
             return false
         }
     }
+
     const json = await res.json()
     return json.validationLevel
 }

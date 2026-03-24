@@ -63,8 +63,8 @@ export function authFormProps(isLogin: boolean, setIsLogin: React.Dispatch<React
 }
 
 export function useAuthValidation() {
-    const [lecturerValidated, setLecturerValidated] = useState<boolean>(false)
-    const [studentValidated, setStudentValidated] = useState<boolean>(false)
+    const [lecturerValidated, setLecturerValidated] = useState<boolean>(true)
+    const [studentValidated, setStudentValidated] = useState<boolean>(true)
     const [loading, setLoading] = useState<boolean>(true)
 
     useEffect(() => {
@@ -74,7 +74,8 @@ export function useAuthValidation() {
                     setLecturerValidated(true)
                 } else if (res === "Tier-2") {
                     setStudentValidated(true)
-                }
+                    setLecturerValidated(false)
+                } 
             }).catch(err => {
                 toast.error(err)
             }).finally(() => {

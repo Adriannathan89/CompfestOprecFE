@@ -59,7 +59,7 @@ export async function updateSubject(subject: Partial<Subject>, subjectId: string
 }
 
 export async function getSubjects() {
-    const connection = import.meta.env.VITE_GET_SUBJECTS_ENDPOINT
+    const connection = import.meta.env.VITE_GET_SUBJECT_ENDPOINT
 
     const res = await fetch(connection, {
         method: 'GET',
@@ -71,7 +71,6 @@ export async function getSubjects() {
     if (!res.ok) {
         throw new Error("Failed to fetch subjects")
     }
-
     const json = await res.json()
     const subjects: Subject[] = json.data.map((subject: any) => ({
         id: subject.id,

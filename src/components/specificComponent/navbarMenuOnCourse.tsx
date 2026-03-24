@@ -12,9 +12,9 @@ export default function NavbarMenuOnCourse() {
                 Buka Kelas
             </button>
             <button 
-            onClick={() => router("/lecturer/courses/addCourse")}
+            onClick={() => router("/lecturer/courses/subjects")}
             className="text-foreground px-4 py-2 border-b-1 border-transparent hover:border-b-1 hover:border-card-foreground">
-                Tambahkan Matakuliah
+                Matakuliah
             </button>
         </div>
     )
