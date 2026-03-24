@@ -7,6 +7,9 @@ import LecturerDashboardPage from './lecturer/dashboard/lecturer-dashboard.page'
 import CourseListPage from './lecturer/courseList/courseList.page'
 import AddSubjectChild from './lecturer/courseList/subPages/addSubjectChild'
 import AddSubjectPage from './lecturer/addSubject/addSubject.page'
+import OpenClassChild from './lecturer/courseList/subPages/openClassChild'
+import MyClassChild from './lecturer/courseList/subPages/myClassChild'
+import NewClassPage from './lecturer/newClass/newClass.page'
 
 export default function App() {
   return (
@@ -20,10 +23,15 @@ export default function App() {
         </Route>
 
         <Route path='/lecturer' element={<LecturerProtectedPage />}>
+
           <Route path='' element={<LecturerDashboardPage />} index />
           <Route path='add-subject' element={<AddSubjectPage />} />
+          <Route path='class/new' element={<NewClassPage />} />
+
           <Route path='courses' element={<CourseListPage />}>
+              <Route path='' element={<MyClassChild />} index />
               <Route path='subjects' element={<AddSubjectChild />} />
+              <Route path='open-class' element={<OpenClassChild />} />
           </Route>
 
         </Route>

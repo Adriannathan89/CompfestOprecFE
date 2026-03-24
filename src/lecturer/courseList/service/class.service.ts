@@ -75,3 +75,32 @@ export async function deleteClass(classId: string) {
 
     return {message: "Class deleted successfully"}
 }
+
+export async function getLecturerClasses() {
+    const connnection = import.meta.env.VITE_LECTURER_GET_OWN_CLASS_ENDPOINT
+
+    const res = await fetch(connnection, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('accessToken')}`
+        }
+    })
+
+    if(!res.ok) {
+        throw new Error("Failed to get lecturer classes")
+    }
+
+    const json = await res.json()
+    const data: Class[] = json.data.map((classData: any) => ({
+        id: classData.id,
+        name: classData.name,
+        subjectId: classData.subjectId,
+        lecturerName: classData.lecturerName,
+        isHiddenLecturer: classData.isHiddenLecturer,
+        classCapacity: classData.classCapacity,
+        currentCapacity: classData.currentCapacity
+    }))
+    
+    return data
+}

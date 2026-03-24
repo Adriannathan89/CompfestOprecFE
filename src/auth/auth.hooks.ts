@@ -68,19 +68,23 @@ export function useAuthValidation() {
     const [loading, setLoading] = useState<boolean>(true)
 
     useEffect(() => {
+        let flag = false
         const validateAuth = async () => {
             await validate().then((res) => {
-                console.log(res)
                 if (res === "Tier-1") {
                     setLecturerValidated(true)
+                    flag = true
                 } else if (res === "Tier-2") {
                     setStudentValidated(true)
                     setLecturerValidated(false)
+                    flag = true
                 } 
             }).catch(err => {
                 toast.error(err)
             }).finally(() => {
                 setLoading(false)
+                if(!flag) setLecturerValidated(false)
+                if(!flag) setStudentValidated(false)
             })
         }
         validateAuth()

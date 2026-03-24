@@ -1,8 +1,8 @@
-import { useState } from "react"
-import { createClass, deleteClass, updateClass, type Class } from "../service/class.service"
+import { useEffect, useState } from "react"
+import { createClass, deleteClass, getLecturerClasses, updateClass, type Class } from "../service/class.service"
 import { toast } from "sonner"
 
-export default function useClassService() {
+export function useClassService() {
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState<string | null>(null)
 
@@ -46,4 +46,28 @@ export default function useClassService() {
     }
 
     return { loading, error, createNewClass, updateCurrentClass, deleteCurrentClass }
+}
+
+export function useFetchClasses() {
+    const [classes, setClasses] = useState<Class[]>([])
+    const [loading, setLoading] = useState(false)
+    const [error, setError] = useState<string | null>(null)
+
+    useEffect(() => {
+        const fetchClasses = async () => {
+            setLoading(true)
+            setError(null)
+
+            getLecturerClasses().then(res => {
+                setClasses(res)
+            }).catch(err => {
+                setError(err.message || "Failed to fetch classes")
+            }).finally(() => {
+                setLoading(false)
+            })
+        }
+        fetchClasses()
+    }, [])
+
+    return { classes, loading, error }
 }

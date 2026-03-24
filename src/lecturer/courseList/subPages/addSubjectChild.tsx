@@ -13,7 +13,7 @@ export default function AddSubjectChild() {
         return
     }
 
-    if(loading) return <p>Loading...</p>
+    if(loading) return <p className="px-12 py-4">Loading...</p>
     return (
         <>
             <div className="px-12 py-4">
