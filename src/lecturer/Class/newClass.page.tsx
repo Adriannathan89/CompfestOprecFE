@@ -2,7 +2,7 @@ import { toast } from "sonner"
 import { useFetchSubjects } from "../../core/hooks/useSubjectService"
 import { Input } from "../../components/ui/input"
 import { useClassService } from "../../core/hooks/useClassService"
-import { useNewClassProp } from "./useNewClassProp"
+import { useNewClassProp } from "./hook/useNewClassProp"
 import { Button } from "../../components/ui/button"
 
 export default function NewClassPage() {

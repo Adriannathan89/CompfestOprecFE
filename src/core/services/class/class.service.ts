@@ -1,4 +1,4 @@
-import { type Class } from "../types/Class.type"
+import { type Class } from "../../types/Class.type"
 
 export async function createClass(req: Class) {
     const connection = import.meta.env.VITE_CREATE_CLASS_ENDPOINT

@@ -1,4 +1,4 @@
-import { type Subject } from "../types/subject.type"
+import { type Subject } from "../../types/subject.type"
 
 export async function createSubject(subject: Subject) {
     const connection = import.meta.env.VITE_CREATE_SUBJECT_ENDPOINT
@@ -93,23 +93,4 @@ export async function deleteSubject(subjectId: string) {
     }
 
     return {message: "Subject deleted successfully"}
-}
-
-export async function getSubjectsWithDetails() {
-    const connection = import.meta.env.VITE_GET_SUBJECT_WITH_DETAIL_ENDPOINT
-
-    const res = await fetch(connection, {
-        method: 'GET',
-        headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${localStorage.getItem('accessToken')}`
-        }
-    })
-
-    if (!res.ok) {
-        throw new Error("Failed to fetch subjects with details")
-    }
-
-    const json = await res.json()
-    return json.data
 }

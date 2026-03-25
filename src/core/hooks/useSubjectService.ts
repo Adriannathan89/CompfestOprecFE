@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react"
-import type { Subject } from "@/core/types/subject.type"
-import { createSubject, updateSubject, deleteSubject, getSubjects } from "@/core/services/subject.service"
+import type { Subject, SubjectWithClass } from "@/core/types/subject.type"
+import { createSubject, updateSubject, deleteSubject, getSubjects } from "@/core/services/subject/subject.service"
 import { toast } from "sonner"
+import { getSubjectsWithDetails } from "../services/subject/subjectWithRelation.service"
 
 export function useSubjectService() {
     const [loading, setLoading] = useState(false)
@@ -60,6 +61,30 @@ export function useFetchSubjects() {
             setError(null)
             try {
                 const res = await getSubjects()
+                setSubjects(res)
+            } catch (err) {
+                setError("Failed to fetch subjects")
+            } finally {
+                setLoading(false)
+            }
+        }
+        fetchSubjects()
+    }, [])
+
+    return { subjects, loading, error }
+}
+
+export function useFetchSubjectsWithDetails() {
+    const [subjects, setSubjects] = useState<SubjectWithClass[]>([])
+    const [loading, setLoading] = useState(false)
+    const [error, setError] = useState<string | null>(null)
+
+    useEffect(() => {
+        const fetchSubjects = async () => {
+            setLoading(true)
+            setError(null)
+            try {
+                const res = await getSubjectsWithDetails()
                 setSubjects(res)
             } catch (err) {
                 setError("Failed to fetch subjects")

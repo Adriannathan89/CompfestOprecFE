@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react"
-import { createClass, deleteClass, getLecturerClasses, updateClass } from "@/core/services/class.service"
+import { createClass, deleteClass, getLecturerClasses, updateClass } from "@/core/services/class/class.service"
 import { type Class } from "@/core/types/Class.type"
 import { toast } from "sonner"
+import { getClassById } from "../services/class/classDetailed.service"
 
 export function useClassService() {
     const [loading, setLoading] = useState(false)
@@ -71,4 +72,28 @@ export function useFetchClasses() {
     }, [])
 
     return { classes, loading, error }
+}
+
+export function useGetClassDetail(classId: string) {
+    const [classDetail, setClassDetail] = useState<Class>({} as Class)
+    const [loading, setLoading] = useState(false)
+    const [error, setError] = useState<string | null>(null)
+
+    useEffect(() => {
+        const fetchClassDetail = async () => {
+            setLoading(true)
+            setError(null)
+            
+            getClassById(classId).then(res => {
+                setClassDetail(res)
+            }).catch(err => {
+                setError(err.message || "Failed to fetch class details")
+            }).finally(() => {
+                setLoading(false)
+            })
+        }
+        fetchClassDetail()
+    }, [classId])
+
+    return { classDetail, loading, error }
 }

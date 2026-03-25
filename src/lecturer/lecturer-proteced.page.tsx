@@ -9,7 +9,7 @@ export default function LecturerProtectedPage() {
 
     if (loading || lecturerValidated === null) return <p>Loading...</p>
 
-    if (studentValidated) {
+    if (studentValidated && !lecturerValidated) {
         toast.error("Anda tidak memiliki akses ke halaman ini")
         return <Navigate to="/student" />
     }
