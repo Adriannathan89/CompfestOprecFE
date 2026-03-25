@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
-import type { Subject } from "../service/subject.service"
-import { createSubject, updateSubject, deleteSubject, getSubjects } from "../service/subject.service"
+import type { Subject } from "@/core/types/subject.type"
+import { createSubject, updateSubject, deleteSubject, getSubjects } from "@/core/services/subject.service"
 import { toast } from "sonner"
 
 export function useSubjectService() {

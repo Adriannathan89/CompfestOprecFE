@@ -1,6 +1,7 @@
 import { getSelf } from "../../core/hooks/auth.hooks"
-import Navbar from "./lecture-navbar"
+import Navbar from "./student-navbar"
 import ToggleTheme from "./toggle-theme"
+
 
 export default function Header() {
     const { username } = getSelf()

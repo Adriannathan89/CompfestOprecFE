@@ -1,5 +1,5 @@
 import { Navigate, Outlet } from "react-router-dom";
-import { useAuthValidation } from "../auth/auth.hooks";
+import { useAuthValidation } from "../core/hooks/auth.hooks";
 import { toast } from "sonner";
 import Header from "../components/shared/lecuture-header";
 

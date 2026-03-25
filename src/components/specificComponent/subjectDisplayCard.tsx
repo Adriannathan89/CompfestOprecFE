@@ -1,4 +1,4 @@
-import type { Subject } from "../../lecturer/courseList/service/subject.service";
+import type { Subject } from "@/core/types/subject.type"
 
 export default function SubjectDisplayCard({ subject }: { subject: Subject}) {
     return (

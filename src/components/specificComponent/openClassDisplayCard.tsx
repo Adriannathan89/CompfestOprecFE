@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom"
-import { type Class } from "../../lecturer/courseList/service/class.service"
+import type { Class } from "@/core/types/Class.type"
 
 export default function OpenClassDisplayCard({ classData } : { classData: Class }) {
     const router = useNavigate()

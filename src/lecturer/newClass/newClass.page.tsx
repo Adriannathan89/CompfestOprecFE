@@ -1,7 +1,7 @@
 import { toast } from "sonner"
-import { useFetchSubjects } from "../courseList/hooks/useSubjectService"
+import { useFetchSubjects } from "../../core/hooks/useSubjectService"
 import { Input } from "../../components/ui/input"
-import { useClassService } from "../courseList/hooks/useClassService"
+import { useClassService } from "../../core/hooks/useClassService"
 import { useNewClassProp } from "./useNewClassProp"
 import { Button } from "../../components/ui/button"
 
@@ -46,7 +46,7 @@ export default function NewClassPage() {
                         name="subjectId"
                         className="h-[40px] shadow-md border-1 border-t border-card-foreground/20 rounded-md px-2">
                             {subjects.map((subject) => (
-                                <option
+                                <option className="bg-card"
                                     key={subject.id}
                                     value={subject.id}>{subject.name}</option>
                             ))}
@@ -71,8 +71,8 @@ export default function NewClassPage() {
                         onChange={onSelectChange} 
                         name="isHiddenLecturer" 
                         className="h-[40px] shadow-md border-1 border-t border-card-foreground/20 rounded-md px-2">
-                            <option value="false">Ya</option>
-                            <option value="true">Tidak</option>
+                            <option className="bg-card" value="false">Ya</option>
+                            <option className="bg-card" value="true">Tidak</option>
                         </select>
                     </div>
 

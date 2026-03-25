@@ -1,5 +1,5 @@
 import { toast } from "sonner";
-import { useSubjectService } from "../courseList/hooks/useSubjectService";
+import { useSubjectService } from "../../core/hooks/useSubjectService";
 import { useAddSubjectProp } from "./useAddSubjectProp";
 import { Input } from "../../components/ui/input";
 import { Button } from "../../components/ui/button";

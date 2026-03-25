@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
-import { createClass, deleteClass, getLecturerClasses, updateClass, type Class } from "../service/class.service"
+import { createClass, deleteClass, getLecturerClasses, updateClass } from "@/core/services/class.service"
+import { type Class } from "@/core/types/Class.type"
 import { toast } from "sonner"
 
 export function useClassService() {

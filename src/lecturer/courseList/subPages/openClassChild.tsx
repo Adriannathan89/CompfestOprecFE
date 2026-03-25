@@ -1,7 +1,7 @@
 import { toast } from "sonner"
-import { useFetchClasses } from "../hooks/useClassService"
-import OpenClassDisplayCard from "../../../components/specificComponent/openClassDisplayCard"
-import { Button } from "../../../components/ui/button"
+import { useFetchClasses } from "@/core/hooks/useClassService"
+import OpenClassDisplayCard from "@/components/specificComponent/openClassDisplayCard"
+import { Button } from "@/components/ui/button"
 import { useNavigate } from "react-router-dom"
 
 export default function OpenClassChild() {

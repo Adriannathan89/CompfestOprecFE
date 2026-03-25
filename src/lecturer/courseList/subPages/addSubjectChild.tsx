@@ -1,7 +1,7 @@
 import { Button } from "@base-ui/react";
-import { useFetchSubjects } from "../hooks/useSubjectService";
+import { useFetchSubjects } from "@/core/hooks/useSubjectService";
 import { toast } from "sonner";
-import SubjectDisplayCard from "../../../components/specificComponent/subjectDisplayCard";
+import SubjectDisplayCard from "@/components/specificComponent/subjectDisplayCard";
 import { useNavigate } from "react-router-dom";
 
 export default function AddSubjectChild() {

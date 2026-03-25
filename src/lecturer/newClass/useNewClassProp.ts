@@ -1,5 +1,5 @@
-import type { Class } from "../courseList/service/class.service";
 import { useState } from "react";
+import type { Class } from "../../core/types/Class.type";
 
 export function useNewClassProp(CreateNewClass: (req: Class) => Promise<void>) {
     const [form, setForm] = useState<Partial<Class>>({

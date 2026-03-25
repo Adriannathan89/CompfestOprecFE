@@ -1,4 +1,4 @@
-import type { Subject } from "../courseList/service/subject.service";
+import { type Subject } from "../../core/types/subject.type"
 import { type ChangeEvent, useState } from "react";
 
 

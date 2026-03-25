@@ -1,11 +1,18 @@
 import { Navigate, Outlet } from "react-router-dom"
-import { useAuthValidation } from "../auth/auth.hooks"
+import { useAuthValidation } from "../core/hooks/auth.hooks"
+import Header from "../components/shared/student-header"
 
 export default function StudentProtectedPage() {
     const { studentValidated, loading } = useAuthValidation()
 
-    console.log(studentValidated)
-    if(loading || studentValidated === null) return <p>Loading...</p>
+    if (loading || studentValidated === null) return <p>Loading...</p>
+    
 
-    return studentValidated ? <Outlet /> : <Navigate to="/login" />
+    return studentValidated ? (
+        <>
+            <Header />
+            <Outlet />
+        </>
+    ) :
+        <Navigate to="/login" />
 }

@@ -1,12 +1,4 @@
-export type Class = {
-    id?: string,
-    name: string,
-    subjectId: string,
-    lecturerName: string
-    isHiddenLecturer: boolean,
-    classCapacity: number,
-    currentCapacity: number
-}
+import { type Class } from "../types/Class.type"
 
 export async function createClass(req: Class) {
     const connection = import.meta.env.VITE_CREATE_CLASS_ENDPOINT
@@ -101,6 +93,6 @@ export async function getLecturerClasses() {
         classCapacity: classData.classCapacity,
         currentCapacity: classData.currentCapacity
     }))
-    
+
     return data
 }
