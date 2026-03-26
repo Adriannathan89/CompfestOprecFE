@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import { Toaster } from 'sonner'
 import AuthPage from './auth/auth.page'
 import StudentProtectedPage from './student/student-protected.page'
@@ -25,6 +25,7 @@ export default function App() {
     <BrowserRouter>
       <Toaster />
       <Routes>
+        <Route path='/' element={<Navigate to="/login" />} index />
         <Route path="/login" element={<AuthPage />} />
 
         <Route path='/student' element={<StudentProtectedPage />}>

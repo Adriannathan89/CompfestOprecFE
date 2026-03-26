@@ -4,11 +4,13 @@ import { Input } from "../../components/ui/input"
 import { useClassService } from "../../core/hooks/useClassService"
 import { useNewClassProp } from "./hook/useNewClassProp"
 import { Button } from "../../components/ui/button"
+import { useNavigate } from "react-router-dom"
 
 export default function NewClassPage() {
     const { subjects, loading, error } = useFetchSubjects()
     const { createNewClass } = useClassService()
     const { form, onChange, onSelectChange, handleSubmit } = useNewClassProp(createNewClass)
+    const router = useNavigate()
 
     if (error) {
         toast.error(error)
@@ -27,7 +29,10 @@ export default function NewClassPage() {
             border-card-foreground/20 shadow-md rounded-xl text-card-foreground p-4">
                 <p className="text-2xl flex justify-center">Buka Kelas Baru</p>
                 <form 
-                onSubmit={handleSubmit}
+                onSubmit={(e) => {
+                    handleSubmit(e)
+                    router("/lecturer/courses/open-class")
+                }}
                 className="flex flex-col gap-[40px]">
                     <div className="flex flex-col gap-[8px]">
                         <p>Nama Kelas: </p>
