@@ -37,7 +37,7 @@ export async function updateSubject(subject: Partial<Subject>, subjectId: string
     }
 
     const res = await fetch(connection + `/${subjectId}`, {
-        method: 'PUT',
+        method: 'PATCH',
         headers: {
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${localStorage.getItem('accessToken')}`

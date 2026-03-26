@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import type { Schedule } from "@/core/types/shedule.type"
 import { useScheduleService } from "@/core/hooks/useScheduleService";
 import type { ClassWithSchedule } from "@/core/types/Class.type";
+import { updateSchedule } from "@/core/services/schedule/shedule.service";
 
 export default function useUpdateClassScheduleProp(classDetail: ClassWithSchedule | null) {
     const { createNewSchedule, deleteCurrentSchedule } = useScheduleService()
@@ -15,18 +16,18 @@ export default function useUpdateClassScheduleProp(classDetail: ClassWithSchedul
         }
     }, [classDetail]);
 
+    const handleInputChange = (scheduleId: string, e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+        const { name, value } = e.target;
+        setShedules(prev => prev.map(schedule => schedule.id === scheduleId ? { ...schedule, [name]: value } : schedule));
+    }
 
     const addNewSchedule = async (schedule: Schedule) => {
-        setLoading(true);
-        setError(null);
         try {
             const newSchedule = await createNewSchedule(schedule);
             const updated = schedulesState ? [...schedulesState, newSchedule] : [newSchedule];
             setShedules(updated);
         } catch (error) {
             setError("Failed to add new schedule");
-        } finally {
-            setLoading(false);
         }
     }
 
@@ -44,5 +45,18 @@ export default function useUpdateClassScheduleProp(classDetail: ClassWithSchedul
         }
     }
 
-    return { schedulesState, loading, error, addNewSchedule, removeSchedule };
+    const updateAllSchedule = async () => {
+        setLoading(true);
+        setError(null);
+
+        try {
+            await Promise.all(schedulesState.map(schedule => updateSchedule(schedule, String(schedule.id))));
+        } catch (error) {
+            setError("Failed to update schedules");
+        } finally {
+            setLoading(false);
+        }
+    }
+
+    return { schedulesState, loading, error, addNewSchedule, removeSchedule, handleInputChange, updateAllSchedule };
 }

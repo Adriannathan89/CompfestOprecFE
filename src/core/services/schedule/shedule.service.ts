@@ -24,7 +24,7 @@ export async function createSchedule(req: Schedule) {
     }
 
     const json = await res.json()
-    console.log(json)
+
     const data: Schedule = {
         id: json.data.id,
         classId: json.data.classId,
@@ -51,4 +51,28 @@ export async function deleteSchedule(scheduleId: string) {
     }
 
     return {message: "Schedule deleted successfully"}
+}
+
+export async function updateSchedule(req: Partial<Schedule>, scheduleId: string) {
+    const connection = import.meta.env.VITE_UPDATE_SCHEDULE_ENDPOINT
+    const reqBody = {
+        dayOfWeek: req.dayOfWeek,
+        startTime: req.startTime,
+        classroom: req.classroom,
+        endTime: req.endTime,
+    }
+
+    const res = await fetch(connection + `/${scheduleId}`, {
+        method: 'PATCH',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('accessToken')}`
+        },
+        body: JSON.stringify(reqBody)
+    })
+    if(!res.ok) {
+        throw new Error("Failed to update schedule")
+    }
+
+    return {message: "Schedule updated successfully"}
 }

@@ -36,7 +36,7 @@ export async function updateClass(req: Partial<Class>, classId: string) {
     }
 
     const res = await fetch(connection + `/${classId}`, {
-        method: 'PUT',
+        method: 'PATCH',
         headers: {
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${localStorage.getItem('accessToken')}`
