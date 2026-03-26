@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { createClass, deleteClass, getLecturerClasses, updateClass } from "@/core/services/class/class.service"
-import { type Class } from "@/core/types/Class.type"
+import { type Class, type ClassWithSchedule } from "@/core/types/Class.type"
 import { toast } from "sonner"
 import { getClassById } from "../services/class/classDetailed.service"
 
@@ -75,7 +75,7 @@ export function useFetchClasses() {
 }
 
 export function useGetClassDetail(classId: string) {
-    const [classDetail, setClassDetail] = useState<Class>({} as Class)
+    const [classDetail, setClassDetail] = useState<ClassWithSchedule | null>(null)
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState<string | null>(null)
 
