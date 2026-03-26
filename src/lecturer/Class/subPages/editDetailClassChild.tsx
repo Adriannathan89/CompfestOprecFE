@@ -8,7 +8,7 @@ import { useState } from "react"
 export default function EditDetailClassChild() {
     const { classId } = useParams()
     const { classDetail, loading, error } = useGetClassDetail(String(classId))
-    const { deleteCurrentClass, updateCurrentClass, loading: updateLoading, error: updateError } = useClassService()
+    const { deleteCurrentClass, loading: updateLoading, error: updateError } = useClassService()
     const [updateMode, setUpdateMode] = useState(false)
 
     if (error || updateError) {
