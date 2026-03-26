@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Button } from "../components/ui/button";
 import { Input } from "../components/ui/input";
-import { authFormProps } from "./auth.hooks";
+import { authFormProps } from "../core/hooks/auth.hooks";
 
 export default function AuthPage() {
     const [isLogin, setIsLogin] = useState(true)
@@ -9,7 +9,7 @@ export default function AuthPage() {
 
     return (
         <div className="flex w-full h-screen justify-center items-center gap-20">
-            <div className="w-[600px] h-[580px] border-1 border-card-foreground/20 shadow-md rounded-xl text-card-foreground p-4">
+            <div className="w-[600px] h-[580px] bg-card/50 border-1 border-card-foreground/20 shadow-md rounded-xl text-card-foreground p-4">
                 <p className="text-2xl flex justify-center">{isLogin ? "Login" : "Register"}</p>
                 <form className="h-[520px] flex flex-col p-4 justify-center" onSubmit={handleSubmit}>
                     <div className="flex flex-col gap-[40px]">

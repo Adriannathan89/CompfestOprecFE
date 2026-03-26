@@ -1,5 +1,5 @@
 import { Navigate, Outlet } from "react-router-dom";
-import { useAuthValidation } from "../auth/auth.hooks";
+import { useAuthValidation } from "../core/hooks/auth.hooks";
 import { toast } from "sonner";
 import Header from "../components/shared/lecuture-header";
 
@@ -7,9 +7,9 @@ import Header from "../components/shared/lecuture-header";
 export default function LecturerProtectedPage() {
     const { lecturerValidated, studentValidated, loading } = useAuthValidation()
 
-    if (loading) return <p>Loading...</p>
+    if (loading || lecturerValidated === null) return <p>Loading...</p>
 
-    if (studentValidated) {
+    if (studentValidated && !lecturerValidated) {
         toast.error("Anda tidak memiliki akses ke halaman ini")
         return <Navigate to="/student" />
     }

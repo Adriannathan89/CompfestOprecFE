@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import { login, logout, register } from "./service/auth.service";
+import { login, logout, register } from "../services/auth/auth.service";
 import { useNavigate } from "react-router-dom";
-import { validate } from "./service/auth-validate.service";
+import { validate } from "../services/auth/auth-validate.service";
 import { toast } from "sonner";
-import { getSelfInfo } from "./service/get-self-info.service";
+import { getSelfInfo } from "../services/auth/get-self-info.service";
 
 export function useLogoutService() {
     useEffect(() => {
@@ -63,22 +63,29 @@ export function authFormProps(isLogin: boolean, setIsLogin: React.Dispatch<React
 }
 
 export function useAuthValidation() {
-    const [lecturerValidated, setLecturerValidated] = useState<boolean>(false)
-    const [studentValidated, setStudentValidated] = useState<boolean>(false)
+    const [lecturerValidated, setLecturerValidated] = useState<boolean | null>(null)
+    const [studentValidated, setStudentValidated] = useState<boolean | null>(null)
     const [loading, setLoading] = useState<boolean>(true)
 
     useEffect(() => {
+        let flag = false
         const validateAuth = async () => {
             await validate().then((res) => {
                 if (res === "Tier-1") {
                     setLecturerValidated(true)
+                    setStudentValidated(true)
+                    flag = true
                 } else if (res === "Tier-2") {
                     setStudentValidated(true)
-                }
+                    setLecturerValidated(false)
+                    flag = true
+                } 
             }).catch(err => {
                 toast.error(err)
             }).finally(() => {
                 setLoading(false)
+                if(!flag) setLecturerValidated(false)
+                if(!flag) setStudentValidated(false)
             })
         }
         validateAuth()

@@ -1,5 +1,5 @@
 import { Outlet } from "react-router-dom"
-import NabvarMenuOnCourse from "../../components/specificComponent/navbarMenuOnCourse"
+import NabvarMenuOnCourse from "@/components/specificComponent/navbarMenuOnCourse"
 
 export default function CourseListPage() {
     return (
