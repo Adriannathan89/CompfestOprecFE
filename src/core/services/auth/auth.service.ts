@@ -34,7 +34,7 @@ export async function login(username: string, password: string) {
         body: JSON.stringify(body)
     })
 
-    if (!res.ok) throw new Error("Login failed")
+    if (!res.ok) throw new Error(await res.json().then(json => json.message) || "Login failed")
 
     const json = await res.json()
 
@@ -59,7 +59,7 @@ export async function refresh() {
     })
 
     if (!res.ok) {
-        throw new Error("Failed to refresh token")
+        throw new Error(await res.json().then(json => json.message) || "Failed to refresh token")
     }
 
     const json = await res.json()

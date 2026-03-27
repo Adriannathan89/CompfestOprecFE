@@ -1,6 +1,7 @@
 import { updateClass } from "@/core/services/class/class.service";
 import type { Class } from "@/core/types/Class.type";
 import { useEffect, useState } from "react";
+import { toast } from "sonner";
 
 export default function useUpdateClassProp(classDetail: Class | null) {
     const [updatedData, setUpdatedData] = useState<Class | null>(null);
@@ -19,7 +20,7 @@ export default function useUpdateClassProp(classDetail: Class | null) {
 
         if(name === "classCapacity") {
             let newValue = value;
-            newValue = newValue.replace(/^0+(?=\d)/, "");
+            newValue = newValue.replace(/^0+(?=\d)/, "").replace(/\D/g, "");
             setUpdatedData(prev => prev ? { ...prev, [name]: Number(newValue) } : null);
             return;
         }
@@ -43,6 +44,7 @@ export default function useUpdateClassProp(classDetail: Class | null) {
                 return;
             }
             await updateClass(updatedData, String(updatedData.id));
+            toast.success("Class updated successfully");
         } catch (error) {
             setError("Failed to update class details");
         } finally {

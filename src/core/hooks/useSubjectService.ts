@@ -14,8 +14,8 @@ export function useSubjectService() {
         try {
             const res = await createSubject(req)
             toast.success(res.message)
-        } catch (err) {
-            setError("Failed to create subject")
+        } catch (err: any) {
+            setError(err.message || "Failed to create subject")
         } finally {
             setLoading(false)
         }
@@ -27,8 +27,8 @@ export function useSubjectService() {
         try {
             const res = await updateSubject(req, subjectId)
             toast.success(res.message)
-        } catch (err) {
-            setError("Failed to update subject")
+        } catch (err: any) {
+            setError(err.message || "Failed to update subject")
         } finally {
             setLoading(false)
         }
@@ -40,8 +40,8 @@ export function useSubjectService() {
         try {
             const res = await deleteSubject(subjectId)
             toast.success(res.message)
-        } catch (err) {
-            setError("Failed to delete subject")
+        } catch (err: any) {
+            setError(err.message || "Failed to delete subject")
         } finally {
             setLoading(false)
         }
@@ -62,8 +62,8 @@ export function useFetchSubjects() {
             try {
                 const res = await getSubjects()
                 setSubjects(res)
-            } catch (err) {
-                setError("Failed to fetch subjects")
+            } catch (err: any) {
+                setError(err.message || "Failed to fetch subjects")
             } finally {
                 setLoading(false)
             }
@@ -86,8 +86,8 @@ export function useFetchSubjectsWithDetails() {
             try {
                 const res = await getSubjectsWithDetails()
                 setSubjects(res)
-            } catch (err) {
-                setError("Failed to fetch subjects")
+            } catch (err: any) {
+                setError(err.message || "Failed to fetch subjects")
             } finally {
                 setLoading(false)
             }

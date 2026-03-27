@@ -1,4 +1,4 @@
-export default function MyClassChild() {
+export default function TimelineChild() {
     return (
         <div>
             <h1>My Class</h1>

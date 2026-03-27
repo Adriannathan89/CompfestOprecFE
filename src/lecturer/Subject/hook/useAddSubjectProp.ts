@@ -1,4 +1,4 @@
-import { type Subject } from "../../core/types/subject.type"
+import { type Subject } from "../../../core/types/subject.type"
 import { type ChangeEvent, useState } from "react";
 
 
@@ -16,7 +16,7 @@ export function useAddSubjectProp(createNewSubject: (req: Subject) => void) {
         if (name === "sks") {
             let newValue = value
 
-            newValue = newValue.replace(/^0+(?=\d)/, "")
+            newValue = newValue.replace(/^0+(?=\d)/, "").replace(/\D/g, "");
 
             setForm({
                 ...form,
@@ -28,7 +28,7 @@ export function useAddSubjectProp(createNewSubject: (req: Subject) => void) {
         if (name === "semesterTaken") {
             let newValue = value
 
-            newValue = newValue.replace(/^0+(?=\d)/, "")
+            newValue = newValue.replace(/^0+(?=\d)/, "").replace(/\D/g, "");
             setForm({
                 ...form,
                 semesterTaken: Number(newValue)

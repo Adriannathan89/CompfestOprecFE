@@ -12,7 +12,7 @@ export async function getClassById(id: string) {
     })
 
     if(!res.ok) {
-        throw new Error("Failed to get class details")
+        throw new Error(await res.json().then(json => json.message) || "Failed to get class details")
     }
 
     const json = await res.json()

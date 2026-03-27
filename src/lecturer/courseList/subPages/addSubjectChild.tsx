@@ -19,7 +19,7 @@ export default function AddSubjectChild() {
             <div className="px-12 py-4">
                 <div className="flex justify-end">
                 <Button 
-                onClick={() => router("/lecturer/add-subject")}
+                onClick={() => router("/lecturer/subject/new")}
                 className="bg-primary text-primary-foreground hover:bg-primary/80 px-4 py-2 rounded-xl">
                     Tambah Matakuliah
                 </Button>

@@ -14,8 +14,8 @@ export function useClassService() {
         try {
             const res = await createClass(req)
             toast.success(res.message)
-        } catch (err) {
-            setError("Failed to create class")
+        } catch (err: any) {
+            setError(err.message || "Failed to create class")
         } finally {
             setLoading(false)
         }
@@ -27,8 +27,8 @@ export function useClassService() {
         try {
             const res = await updateClass(req, classId)
             toast.success(res.message)
-        } catch (err) {
-            setError("Failed to update class")
+        } catch (err: any) {
+            setError(err.message || "Failed to update class")
         } finally {
             setLoading(false)
         }
@@ -40,8 +40,8 @@ export function useClassService() {
         try {
             const res = await deleteClass(classId)
             toast.success(res.message)
-        } catch (err) {
-            setError("Failed to delete class")
+        } catch (err: any) {
+            setError(err.message || "Failed to delete class")
         } finally {
             setLoading(false)
         }

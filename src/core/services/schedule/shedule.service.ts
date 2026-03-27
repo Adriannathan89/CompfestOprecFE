@@ -20,7 +20,7 @@ export async function createSchedule(req: Schedule) {
         body: JSON.stringify(reqBody)
     })
     if(!res.ok) {
-        throw new Error("Failed to create schedule")
+        throw new Error(await res.json().then(json => json.message) || "Failed to create schedule")
     }
 
     const json = await res.json()
@@ -47,7 +47,7 @@ export async function deleteSchedule(scheduleId: string) {
         }
     })
     if(!res.ok) {
-        throw new Error("Failed to delete schedule")
+        throw new Error(await res.json().then(json => json.message) || "Failed to delete schedule")
     }
 
     return {message: "Schedule deleted successfully"}
@@ -71,7 +71,7 @@ export async function updateSchedule(req: Partial<Schedule>, scheduleId: string)
         body: JSON.stringify(reqBody)
     })
     if(!res.ok) {
-        throw new Error("Failed to update schedule")
+        throw new Error(await res.json().then(json => json.message) || "Failed to update schedule")
     }
 
     return {message: "Schedule updated successfully"}

@@ -14,7 +14,7 @@ export function useNewClassProp(CreateNewClass: (req: Class) => Promise<void>) {
 
         if (name === "classCapacity") {
             let newValue = value
-            newValue = newValue.replace(/^0+(?=\d)/, "")
+            newValue = newValue.replace(/^0+(?=\d)/, "").replace(/\D/g, "");
 
             setForm({
                 ...form,

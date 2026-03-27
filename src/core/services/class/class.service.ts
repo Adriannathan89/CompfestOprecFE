@@ -20,7 +20,7 @@ export async function createClass(req: Class) {
     })
 
     if(!res.ok) {
-        throw new Error("Failed to create class")
+        throw new Error(await res.json().then(json => json.message) || "Failed to create class")
     }
 
     return {message: "Class created successfully"}
@@ -45,7 +45,7 @@ export async function updateClass(req: Partial<Class>, classId: string) {
     })
 
     if(!res.ok) {
-        throw new Error("Failed to update class")
+        throw new Error(await res.json().then(json => json.message) || "Failed to update class")
     }
 
     return {message: "Class updated successfully"}
@@ -62,7 +62,7 @@ export async function deleteClass(classId: string) {
     })
 
     if(!res.ok) {
-        throw new Error("Failed to delete class")
+        throw new Error(await res.json().then(json => json.message) || "Failed to delete class")
     }
 
     return {message: "Class deleted successfully"}
@@ -80,7 +80,7 @@ export async function getLecturerClasses() {
     })
 
     if(!res.ok) {
-        throw new Error("Failed to get lecturer classes")
+        throw new Error(await res.json().then(json => json.message) || "Failed to get lecturer classes")
     }
 
     const json = await res.json()
