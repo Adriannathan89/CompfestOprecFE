@@ -1,4 +1,4 @@
-import { type Class } from "../../types/Class.type"
+import { type Class, type ClassWithSchedule } from "../../types/Class.type"
 
 export async function createClass(req: Class) {
     const connection = import.meta.env.VITE_CREATE_CLASS_ENDPOINT
@@ -20,7 +20,7 @@ export async function createClass(req: Class) {
     })
 
     if(!res.ok) {
-        throw new Error("Failed to create class")
+        throw new Error(await res.json().then(json => json.message) || "Failed to create class")
     }
 
     return {message: "Class created successfully"}
@@ -45,7 +45,7 @@ export async function updateClass(req: Partial<Class>, classId: string) {
     })
 
     if(!res.ok) {
-        throw new Error("Failed to update class")
+        throw new Error(await res.json().then(json => json.message) || "Failed to update class")
     }
 
     return {message: "Class updated successfully"}
@@ -62,7 +62,7 @@ export async function deleteClass(classId: string) {
     })
 
     if(!res.ok) {
-        throw new Error("Failed to delete class")
+        throw new Error(await res.json().then(json => json.message) || "Failed to delete class")
     }
 
     return {message: "Class deleted successfully"}
@@ -80,18 +80,25 @@ export async function getLecturerClasses() {
     })
 
     if(!res.ok) {
-        throw new Error("Failed to get lecturer classes")
+        throw new Error(await res.json().then(json => json.message) || "Failed to get lecturer classes")
     }
 
     const json = await res.json()
-    const data: Class[] = json.data.map((classData: any) => ({
+    const data: ClassWithSchedule[] = json.data.map((classData: any) => ({
         id: classData.id,
         name: classData.name,
         subjectId: classData.subjectId,
         lecturerName: classData.lecturerName,
         isHiddenLecturer: classData.isHiddenLecturer,
         classCapacity: classData.classCapacity,
-        currentCapacity: classData.currentCapacity
+        currentCapacity: classData.currentCapacity,
+        schedules: classData.schedules.map((scheduleData: any) => ({
+            id: scheduleData.id,
+            dayOfWeek: scheduleData.dayOfWeek,
+            classroom: scheduleData.classroom,
+            startTime: scheduleData.startTime,
+            endTime: scheduleData.endTime,
+        }))
     }))
 
     return data

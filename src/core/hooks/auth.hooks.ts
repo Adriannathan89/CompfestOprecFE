@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { login, logout, register } from "../services/auth/auth.service";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { validate } from "../services/auth/auth-validate.service";
 import { toast } from "sonner";
 import { getSelfInfo } from "../services/auth/get-self-info.service";
@@ -32,8 +32,9 @@ export function authFormProps(isLogin: boolean, setIsLogin: React.Dispatch<React
         e.preventDefault()
         if (isLogin) {
             const success = await login(form.username, form.password).catch(err => {
-                toast.error(err)
+                toast.error(err.message || "Login failed")
             })
+
             if (success) {
                 await validate().then((res) => {
                     if (res === "Tier-1") {
@@ -42,7 +43,7 @@ export function authFormProps(isLogin: boolean, setIsLogin: React.Dispatch<React
                         router("/student")
                     }
                 }).catch(err => {
-                    toast.error(err)
+                    toast.error(err.message || "Failed to validate authentication")
                 })
             }
         } else {
@@ -51,7 +52,8 @@ export function authFormProps(isLogin: boolean, setIsLogin: React.Dispatch<React
                 return
             }
             const success = await register(form.username, form.password).catch(err => {
-                toast.error(err)
+                toast.error(err.message || "Registration failed")
+                return false
             })
 
             if (success) {
@@ -66,7 +68,8 @@ export function useAuthValidation() {
     const [lecturerValidated, setLecturerValidated] = useState<boolean | null>(null)
     const [studentValidated, setStudentValidated] = useState<boolean | null>(null)
     const [loading, setLoading] = useState<boolean>(true)
-
+    const location = useLocation()
+    
     useEffect(() => {
         let flag = false
         const validateAuth = async () => {
@@ -81,7 +84,7 @@ export function useAuthValidation() {
                     flag = true
                 } 
             }).catch(err => {
-                toast.error(err)
+                toast.error(err.message || "Failed to validate authentication")
             }).finally(() => {
                 setLoading(false)
                 if(!flag) setLecturerValidated(false)
@@ -89,7 +92,7 @@ export function useAuthValidation() {
             })
         }
         validateAuth()
-    }, [])
+    }, [location.pathname])
 
     return { lecturerValidated, studentValidated, loading }
 }
@@ -102,7 +105,7 @@ export function getSelf() {
             getSelfInfo().then(res => {
                 setUsername(res)
             }).catch(err => {
-                toast.error(err)
+                toast.error(err.message || "Failed to fetch user info")
             })
         }
         fetchSelfInfo()

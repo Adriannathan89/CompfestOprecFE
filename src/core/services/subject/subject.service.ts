@@ -20,7 +20,7 @@ export async function createSubject(subject: Subject) {
     })
 
     if (!res.ok) {
-        throw new Error("Failed to create subject")
+        throw new Error(await res.json().then(json => json.message) || "Failed to create subject")
     }
 
     return {message: "Subject created successfully"}
@@ -46,7 +46,7 @@ export async function updateSubject(subject: Partial<Subject>, subjectId: string
     })
 
     if (!res.ok) {
-        throw new Error("Failed to update subject")
+        throw new Error(await res.json().then(json => json.message) || "Failed to update subject")
     }
 
     return {message: "Subject updated successfully"}
@@ -63,7 +63,7 @@ export async function getSubjects() {
     })
 
     if (!res.ok) {
-        throw new Error("Failed to fetch subjects")
+        throw new Error(await res.json().then(json => json.message) || "Failed to fetch subjects")
     }
     const json = await res.json()
     const subjects: Subject[] = json.data.map((subject: any) => ({
@@ -89,7 +89,7 @@ export async function deleteSubject(subjectId: string) {
     })
 
     if (!res.ok) {
-        throw new Error("Failed to delete subject")
+        throw new Error(await res.json().then(json => json.message) || "Failed to delete subject")
     }
 
     return {message: "Subject deleted successfully"}

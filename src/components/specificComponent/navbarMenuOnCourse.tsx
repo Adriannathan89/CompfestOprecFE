@@ -8,7 +8,7 @@ export default function NavbarMenuOnCourse() {
             <button 
             onClick={() => router("/lecturer/courses")}
             className="text-foreground px-4 py-2 border-b-1 border-transparent hover:border-b-1 hover:border-card-foreground">
-                Kelas Saya
+                Timeline
             </button>
             <button 
             onClick={() => router("/lecturer/courses/open-class")}
