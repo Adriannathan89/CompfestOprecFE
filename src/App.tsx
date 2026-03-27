@@ -10,6 +10,7 @@ import { SubjectRoutes } from './routeRegister/subject.route'
 import { ClassRoutes } from './routeRegister/class.route'
 import { IRSRoutes } from './routeRegister/irs.route'
 import { AcademicRoutes } from './routeRegister/academic.route'
+import { ScheduleRoutes } from './routeRegister/shedule.route'
 
 export default function App() {
   return (
@@ -24,9 +25,10 @@ export default function App() {
           { AcademicRoutes }
           { IRSRoutes }
         </Route>
-        
+
         <Route path='/lecturer' element={<LecturerProtectedPage />}>
           <Route index element={<LecturerDashboardPage />} />
+          { ScheduleRoutes }
           { ClassRoutes }
           { SubjectRoutes }
           { CoursesRoutes }

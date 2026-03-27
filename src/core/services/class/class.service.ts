@@ -1,4 +1,4 @@
-import { type Class } from "../../types/Class.type"
+import { type Class, type ClassWithSchedule } from "../../types/Class.type"
 
 export async function createClass(req: Class) {
     const connection = import.meta.env.VITE_CREATE_CLASS_ENDPOINT
@@ -84,14 +84,21 @@ export async function getLecturerClasses() {
     }
 
     const json = await res.json()
-    const data: Class[] = json.data.map((classData: any) => ({
+    const data: ClassWithSchedule[] = json.data.map((classData: any) => ({
         id: classData.id,
         name: classData.name,
         subjectId: classData.subjectId,
         lecturerName: classData.lecturerName,
         isHiddenLecturer: classData.isHiddenLecturer,
         classCapacity: classData.classCapacity,
-        currentCapacity: classData.currentCapacity
+        currentCapacity: classData.currentCapacity,
+        schedules: classData.schedules.map((scheduleData: any) => ({
+            id: scheduleData.id,
+            dayOfWeek: scheduleData.dayOfWeek,
+            classroom: scheduleData.classroom,
+            startTime: scheduleData.startTime,
+            endTime: scheduleData.endTime,
+        }))
     }))
 
     return data

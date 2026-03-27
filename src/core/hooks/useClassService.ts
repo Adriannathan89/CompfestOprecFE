@@ -51,7 +51,7 @@ export function useClassService() {
 }
 
 export function useFetchClasses() {
-    const [classes, setClasses] = useState<Class[]>([])
+    const [classes, setClasses] = useState<ClassWithSchedule[]>([])
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState<string | null>(null)
 

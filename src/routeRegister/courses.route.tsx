@@ -8,6 +8,7 @@ export const CoursesRoutes = (
     <>
         <Route path='courses' element={<CourseListPage />}>
             <Route index element={<TimelineChild />} />
+            <Route path='timeline' element={<TimelineChild />} />
             <Route path='subjects' element={<AddSubjectChild />} />
             <Route path='open-class' element={<OpenClassChild />} />
         </Route>
