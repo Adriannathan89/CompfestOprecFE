@@ -3,7 +3,7 @@ import { login, logout, register } from "../services/auth/auth.service";
 import { useLocation, useNavigate } from "react-router-dom";
 import { validate } from "../services/auth/auth-validate.service";
 import { toast } from "sonner";
-import { getSelfInfo } from "../services/auth/get-self-info.service";
+import { getSelfFinalizationStatus, getSelfInfo } from "../services/auth/get-self-info.service";
 
 export function useLogoutService() {
     useEffect(() => {
@@ -112,4 +112,22 @@ export function getSelf() {
     }, [])
 
     return { username }
+}
+
+export function getFinalizationStatus() {
+    const [isFinalized, setIsFinalized] = useState<boolean>(false)  
+
+    useEffect(() => {
+        const fetchFinalizationStatus = async () => {
+            getSelfFinalizationStatus().then(res => {
+                setIsFinalized(res)
+            }).catch(err => {
+                toast.error(err.message || "Failed to fetch finalization status")
+            })
+        }
+        
+        fetchFinalizationStatus()
+    }, [])
+
+    return { isFinalized }
 }

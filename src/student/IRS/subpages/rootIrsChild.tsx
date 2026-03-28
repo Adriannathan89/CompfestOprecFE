@@ -13,7 +13,12 @@ export default function RootIrsChild() {
 
 
     return (
-        <div className="flex flex-col py-4">
+        <div className="px-10 flex flex-col py-4 mt-6 max-md:text-xs">
+            <div className="px-10 flex justify-between w-full bg-card py-3 rounded-md">
+                <div className="w-[36px]">MataKuliah</div>
+                <div>Jadwal</div>
+                <div>Dosen</div>
+            </div>
             {subjects?.map(subject => (
                 <SubjectWithDetailDisplayCard key={subject.id} subject={subject} />
             ))}

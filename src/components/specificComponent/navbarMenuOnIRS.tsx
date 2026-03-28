@@ -17,15 +17,9 @@ export default function NavbarMenuOnIRS() {
             </button>
 
             <button 
-            onClick={() => router("/student/irs/view")}
+            onClick={() => router("/student/irs/finalize")}
             className="border-b-1 border-transparent hover:border-b-1 hover:border-card-foreground text-foreground">
-                Lihat IRS   
-            </button>
-
-            <button 
-            onClick={() => router("/student/irs/drop")}
-            className="border-b-1 border-transparent hover:border-b-1 hover:border-card-foreground text-foreground">
-                Drop IRS
+                Finalisasi IRS
             </button>
         </div>
     )
