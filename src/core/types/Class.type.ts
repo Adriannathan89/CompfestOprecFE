@@ -20,3 +20,18 @@ export type ClassWithSchedule = {
     currentCapacity: number,
     schedules: Schedule[]
 }
+
+export type ClassWithSubject = {
+    id?: string,
+    name: string,
+    subject: {
+        id: string,
+        name: string,
+        code: string,
+        sks: number
+    },
+    lecturerName: string
+    isHiddenLecturer: boolean,
+    classCapacity: number,
+    currentCapacity: number,
+}

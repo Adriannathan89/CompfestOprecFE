@@ -1,8 +1,8 @@
 export default function StudentDashboardPage() {
     return (
-        <div className="p-6 flex flex-col gap-6">
+        <div className="p-6 flex flex-col gap-6 w-full">
             <p className="flex justify-center text-2xl font-medium text-card-foreground">Selamat datang di menu utama Mahasiswa</p>
-            <div className="px-60 py-3">
+            <div className="px-60 py-3 max-xl:px-0">
             <div className="flex flex-col gap-4 justify-center border-1 border-card-foreground/20 shadow-md rounded-xl text-card-foreground p-4">
                 <p className="flex justify-start text-lg">Berita/Pengumuman</p>
                 <div className="flex flex-col gap-2 h-[680px] overflow-y-auto pr-2">
