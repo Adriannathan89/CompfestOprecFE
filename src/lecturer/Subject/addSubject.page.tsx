@@ -19,9 +19,9 @@ export default function AddSubjectPage() {
     return (
         <div className="flex justify-center items-center w-full h-[900px] border-1">
             <div className="w-[640px] h-[640px] bg-card/50 border-1 shadow-md border-card-foreground/20 rounded-lg p-6">
-                <p className="flex justify-center text-2xl font-semibold mb-4">Tambah Mata Kuliah</p>
+                <p className="flex justify-center text-2xl max-md:text-xl max-sm:text-lg font-semibold mb-4">Tambah Mata Kuliah</p>
                 <form 
-                className="flex flex-col gap-[40px]"
+                className="flex flex-col gap-[40px] mt-[28px]"
                 onSubmit={handleSubmit}>
                     <div className="flex flex-col gap-[8px]">
                         <p>Nama Matakuliah: </p>

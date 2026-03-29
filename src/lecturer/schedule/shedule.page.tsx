@@ -6,7 +6,6 @@ const DAYS = ["Senin", "Selasa", "Rabu", "Kamis", "Jumat"]
 const TIME_SLOTS = ["08:00", "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00"]
 const DAY_NUMBERS = { 1: 0, 2: 1, 3: 2, 4: 3, 5: 4 }
 
-// Total durasi grid dari jam 8 sampai 18 adalah 10 jam
 const START_HOUR = 8
 const TOTAL_HOURS = 10 
 
@@ -44,7 +43,6 @@ export default function ShedulePage() {
         return <p className="px-20 py-5">Loading...</p>
     }
 
-    // Ubah perhitungan px menjadi persentase (%)
     const getScheduleStyle = (startTime: string, endTime: string) => {
         const [startHour, startMinute] = startTime.split(':').map(Number)
         const [endHour, endMinute] = endTime.split(':').map(Number)
@@ -72,13 +70,11 @@ export default function ShedulePage() {
                 ))}
             </div>
 
-            {/* Container ini mengisi sisa tinggi (flex-1) */}
             <div className="flex flex-1 relative mt-2">
                 <div className="w-16 md:w-20 flex-shrink-0 flex flex-col relative h-full">
                     {TIME_SLOTS.map((time, index) => (
                         <div 
                             key={time} 
-                            // Hitung posisi label jam berdasarkan persentase
                             style={{ top: `${(index / TOTAL_HOURS) * 100}%` }} 
                             className="absolute w-full text-right pr-2 md:pr-4 text-[10px] md:text-xs text-muted-foreground font-medium -translate-y-1/2"
                         >
@@ -89,10 +85,8 @@ export default function ShedulePage() {
 
                 <div className="flex flex-1 relative border-t border-l border-card-foreground/10 h-full">
                     
-                    {/* Background Grid Horizontal */}
                     <div className="absolute inset-0 pointer-events-none flex flex-col">
                         {TIME_SLOTS.slice(1).map((time) => (
-                            // Tiap blok punya tinggi 10% (1 per TOTAL_HOURS)
                             <div key={time} style={{ height: `${(1 / TOTAL_HOURS) * 100}%` }} className="border-b border-card-foreground/10 w-full" />
                         ))}
                     </div>

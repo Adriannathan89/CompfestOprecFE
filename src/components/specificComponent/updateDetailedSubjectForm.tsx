@@ -77,7 +77,7 @@ export default function UpdateDetailedSubjectForm({ subject, editMode, setEditMo
                 </form>
             </div>
 
-            <div className="flex justify-end px-20 py-4 gap-[40px]">
+            <div className="flex justify-end px-20 py-4 gap-[40px] max-md:px-0 mt-[20px]">
                 <Button 
                 hidden={editMode}
                 onClick={() => setEditMode(!editMode)}
@@ -89,7 +89,7 @@ export default function UpdateDetailedSubjectForm({ subject, editMode, setEditMo
                         handleDelete()
                         router("/lecturer/courses/subjects")
                     }
-                }} className="text-destructive-foreground bg-destructive hover:bg-destructive/70">
+                }} className="text-destructive-foreground bg-destructive hover:bg-destructive/70 text-primary-foreground px-4 py-2 rounded-md">
                     Hapus Matakuliah
                 </Button>
             </div>

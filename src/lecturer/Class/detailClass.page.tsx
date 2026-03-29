@@ -5,7 +5,7 @@ export default function DetailClassPage() {
     const router = useNavigate()
     
     return (
-        <div className="px-20 py-16">
+        <div className="px-20 max-sm:px-0 py-16">
             <div className="flex justify-center gap-[40px]">
                 <button 
                 onClick={() => router(`/lecturer/class/${classId}`)}

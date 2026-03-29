@@ -3,6 +3,7 @@ import { useFetchSubjects } from "@/core/hooks/useSubjectService";
 import { toast } from "sonner";
 import SubjectDisplayCard from "@/components/specificComponent/subjectDisplayCard";
 import { useNavigate } from "react-router-dom";
+import { Plus } from "lucide-react";
 
 export default function AddSubjectChild() {
     const { subjects, loading, error } = useFetchSubjects()
@@ -16,13 +17,18 @@ export default function AddSubjectChild() {
     if(loading) return <p className="px-12 py-4">Loading...</p>
     return (
         <>
-            <div className="px-12 py-4">
+            <div className="px-12 max-md:px-0 py-4">
                 <div className="flex justify-end">
                 <Button 
                 onClick={() => router("/lecturer/subject/new")}
-                className="bg-primary text-primary-foreground hover:bg-primary/80 px-4 py-2 rounded-xl">
+                className="bg-primary text-primary-foreground hover:bg-primary/80 px-4 py-2 rounded-xl max-sm:hidden">
                     Tambah Matakuliah
                 </Button>
+                <button
+                onClick={() => router("/lecturer/subject/new")}
+                className="sm:hidden border-1 rounded-full h-[52px] w-[52px] flex justify-center items-center text-white bg-green-600 hover:bg-green-700">
+                    <Plus size={32} />
+                </button>
                 </div>
 
                 <div>

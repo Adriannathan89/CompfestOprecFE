@@ -27,7 +27,7 @@ export default function NewClassPage() {
         <div className="flex w-full h-[900px] justify-center items-center">
             <div className="flex flex-col w-[700px] h-[680px] bg-card/50 gap-4 border-1 
             border-card-foreground/20 shadow-md rounded-xl text-card-foreground p-4">
-                <p className="text-2xl flex justify-center">Buka Kelas Baru</p>
+                <p className="text-2xl flex justify-center max-md:text-lg max-sm:text-base">Buka Kelas Baru</p>
                 <form 
                 onSubmit={(e) => {
                     handleSubmit(e)

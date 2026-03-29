@@ -9,11 +9,11 @@ export default function Header() {
     return (
         <div className="flex justify-between w-full h-[64px] bg-card text-secondary-foreground items-center px-4">
             <div>
-                <p className="ml-4 text-lg font-medium">SIAKNG Lite</p>
+                <p className="max-md:ml-2 max-md:text-md max-sm:text-sm ml-4 font-medium">SIAKNG Lite</p>
             </div>
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-2">
                 <ToggleTheme />
-                <div className="mr-[60px]">
+                <div className="max-md:mr-[4px] mr-[16px]">
                     <Navbar />
                 </div>
                 <p className="text-sm">{username}</p>
