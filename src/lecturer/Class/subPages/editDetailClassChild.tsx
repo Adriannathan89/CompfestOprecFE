@@ -37,7 +37,7 @@ export default function EditDetailClassChild() {
                     handleSubmit(e);
                     updateAllSchedule();
                     setUpdateMode(false);
-                }}
+                }}  
                 className="min-w-[400px] flex flex-col gap-[20px]">
                     <UpdateClassForm updatedData={updatedData} handleInputChange={handleClassInputChange} updateMode={updateMode} />
 

@@ -13,6 +13,11 @@ export default function AcademicPage() {
     if (loading || conflictingClassesLoading || !enrollmentForm || !conflictingClasses) {
         return <p>Loading...</p>
     }
+
+    if(enrollmentForm.length === 0) {
+        return <p className="py-10 text-center text-muted-foreground">Anda belum mengisi IRS untuk semester ini.</p>
+    }
+    
     const totalSks = enrollmentForm.reduce((total, form) => {
         const sks = form.class?.subject?.sks || 0
         return total + sks
