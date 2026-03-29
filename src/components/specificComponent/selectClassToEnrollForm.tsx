@@ -29,22 +29,22 @@ export default function SubjectWithDetailDisplayCard({
 
     return (
         <div className="w-full py-8">
-            <div className="flex flex-col gap-2 px-4 py-3">
-                <div className="flex justify-between pb-3 border-b-1 border-card-foreground">
-                    <p>{subject.code} - {subject.name} ( {subject.sks} SKS, Term {subject.semesterTaken} )</p>
+            <div className="flex flex-col gap-2 px-4 py-3 max-md:px-2 max-sm:px-0">
+                <div className="flex pb-3 border-b-1 border-card-foreground ml-3 max-sm:ml-0">
+                    <p className="ml-2">{subject.code} - {subject.name} ( {subject.sks} SKS, Term {subject.semesterTaken} )</p>
                 </div>
                 <div className="w-full">
-                    <p>Daftar Kelas terbuka: </p>
+                    <p className="ml-2">Daftar Kelas terbuka: </p>
                     {subject.classes.length > 0 ? subject.classes.map((classItem) => {
                         const classId = String(classItem.id)
                         return (
-                            <div key={classId} className="flex ml-6 justify-between py-2">
+                            <div key={classId} className="flex ml-6 justify-between py-2 max-sm:ml-4">
                                 <div className="flex max-md:flex-col">
-                                    <p className="text-sm">{classItem.name}</p>
-                                    <p className="text-sm ml-5">({classItem.currentCapacity}/{classItem.classCapacity})</p>
+                                    <p className="text-sm max-sm:text-xs">{classItem.name}</p>
+                                    <p className="text-sm ml-5 max-sm:text-xs">({classItem.currentCapacity}/{classItem.classCapacity})</p>
                                 </div>
                                 <div>
-                                    <div className="flex flex-col items-center gap-2 text-sm text-secondary-foreground">
+                                    <div className="flex flex-col items-center gap-2 text-sm text-secondary-foreground max-sm:text-xs">
                                         {classItem.schedules.map(schedule => (
                                             <div key={schedule.id}>
                                                 <p className="max-md:hidden">
@@ -60,9 +60,12 @@ export default function SubjectWithDetailDisplayCard({
                                         ))}
                                     </div>
                                 </div>
-                                <div className="flex gap-[20px] h-[40px] items-center">
-                                    <p className="text-sm">
+                                <div className="flex gap-[20px] h-[40px] max-sm:gap-[4px] items-center">
+                                    <p className="text-sm max-sm:hidden">
                                         {classItem.isHiddenLecturer ? "Belum diInformasikan" : classItem.lecturerName}
+                                    </p>
+                                    <p className="text-sm sm:hidden max-sm:text-xs break-words">
+                                        {classItem.isHiddenLecturer ? "X" : classItem.lecturerName}
                                     </p>
                                     <input
                                         type="radio"

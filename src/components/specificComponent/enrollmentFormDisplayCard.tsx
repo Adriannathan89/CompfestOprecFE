@@ -12,19 +12,19 @@ export default function EnrollmentFormDisplayCard({ enrollmentForm }: { enrollme
     return (
         <div className="flex justify-center">
             <div className="flex w-[904px] bg-card h-[48px] px-4">
-                <div className="flex items-center w-[20%]">
+                <div className="flex items-center w-[20%] justify-center">
                     {subjectCode}
                 </div>
-                <div className="flex items-center w-[20%]">
+                <div className="flex items-center w-[20%] justify-center">
                     {subjectName}
                 </div>
-                <div className="flex items-center w-[20%] ml-2">
+                <div className="flex items-center w-[20%] justify-center">
                     {sks}
                 </div>
-                <div className="flex items-center w-[20%]">
+                <div className="flex items-center w-[20%] justify-center">
                     {className}
                 </div>
-                <div className="ml-4 flex items-center w-[20%]">
+                <div className="ml-4 flex items-center w-[20%] justify-center">
                     {formattedDate}
                 </div>
             </div>

@@ -6,7 +6,7 @@ export default function Header() {
     const { username } = getSelf()
 
     return (
-        <div className="flex justify-between w-full h-[64px] bg-card text-secondary-foreground items-center px-4">
+        <div className="flex justify-between w-full h-[64px] bg-card text-secondary-foreground items-center px-4 max-sm:px-1">
             <div>
                 <p className="max-md:ml-2 max-md:text-md max-sm:text-sm ml-4 text-lg font-medium">SIAKNG Lite</p>
             </div>
@@ -15,8 +15,8 @@ export default function Header() {
                 <div className="max-md:mr-[4px] mr-[16px]">
                     <Navbar />
                 </div>
-                <p className="text-sm">{username}</p>
-                <img src={`https://ui-avatars.com/api/?name=${username}`} alt="Avatar" className="w-8 h-8 rounded-full" />
+                <p className="text-sm max-sm:mr-1">{username}</p>
+                <img src={`https://ui-avatars.com/api/?name=${username}`} alt="Avatar" className="w-8 h-8 rounded-full max-sm:w-7 max-sm:h-7" />
             </div>
         </div>
     )

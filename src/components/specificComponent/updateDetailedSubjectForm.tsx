@@ -16,13 +16,13 @@ export default function UpdateDetailedSubjectForm({ subject, editMode, setEditMo
     const router = useNavigate()
 
     return (
-        <div className="px-20 py-16">
+        <div className="px-20 py-16 max-sm:px-4">
             <div className="flex justify-center">
                 <form 
                 onSubmit={(e) => {
                     handleSubmit(e)
                 }}
-                className="min-w-[400px] flex flex-col gap-[40px]">
+                className="w-full md:max-w-[400px] flex flex-col gap-[40px]">
                     <div className="flex flex-col gap-[8px]">
                         <p>Nama Matakuliah: </p>
                         <Input
@@ -65,7 +65,7 @@ export default function UpdateDetailedSubjectForm({ subject, editMode, setEditMo
 
                     <div 
                     hidden={!editMode}
-                    className="flex justify-center min-w-[400px] border-t-1 border-card-foreground pt-4">
+                    className="flex justify-center w-full md:max-w-[400px] border-t-1 border-card-foreground pt-4">
                         <Button
                             onClick={() => setEditMode(!editMode)}
                             className="mt-4 w-full bg-primary text-primary-foreground hover:bg-primary/80 px-4 py-2 rounded-md"
@@ -77,7 +77,7 @@ export default function UpdateDetailedSubjectForm({ subject, editMode, setEditMo
                 </form>
             </div>
 
-            <div className="flex justify-end px-20 py-4 gap-[40px] max-md:px-0 mt-[20px]">
+            <div className="flex justify-end px-20 py-4 gap-[40px] max-sm:px-4 max-sm:gap-[20px] max-md:px-0 mt-[20px]">
                 <Button 
                 hidden={editMode}
                 onClick={() => setEditMode(!editMode)}
