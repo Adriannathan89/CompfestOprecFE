@@ -1,4 +1,4 @@
-import SelectClassToEnrollForm from "@/components/specificComponent/selectClassToEnrollForm"
+import SelectClassToEnrollForm from "@/components/specificComponent/form/selectClassToEnrollForm"
 import { useFetchSubjectsWithDetails } from "@/core/hooks/useSubjectService"
 import { toast } from "sonner"
 import { useChangeIRSProp } from "../hook/useChangeIRSProp"

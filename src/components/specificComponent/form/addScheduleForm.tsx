@@ -1,4 +1,4 @@
-import { Input } from "../ui/input";
+import { Input } from "../../ui/input";
 import type { Schedule } from "@/core/types/shedule.type";
 
 interface AddScheduleFormProps {

@@ -1,6 +1,6 @@
 import { toast } from "sonner"
 import { useFetchClasses } from "@/core/hooks/useClassService"
-import OpenClassDisplayCard from "@/components/specificComponent/openClassDisplayCard"
+import OpenClassDisplayCard from "@/components/specificComponent/displayCard/openClassDisplayCard"
 import { Button } from "@/components/ui/button"
 import { useNavigate } from "react-router-dom"
 import { Plus } from "lucide-react"

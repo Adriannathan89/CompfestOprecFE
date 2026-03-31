@@ -1,4 +1,4 @@
-import SubjectWithDetailDisplayCard from "@/components/specificComponent/subjectWithDetailDisplayCard"
+import SubjectWithDetailDisplayCard from "@/components/specificComponent/displayCard/subjectWithDetailDisplayCard"
 import { useFetchSubjectsWithDetails } from "@/core/hooks/useSubjectService"
 import { toast } from "sonner"
 

@@ -1,6 +1,6 @@
 import { useFetchEnrollmentForm, useFinalizeEnrollment } from "@/core/hooks/StudentTakingForm.hook"
 import { toast } from "sonner"
-import EnrollmentFormDisplayCard from "@/components/specificComponent/enrollmentFormDisplayCard"
+import EnrollmentFormDisplayCard from "@/components/specificComponent/displayCard/enrollmentFormDisplayCard"
 import { useGetConflictingClasses } from "@/core/hooks/StudentTakingForm.hook"
 import { Button } from "@/components/ui/button"
 

@@ -5,9 +5,9 @@ import { toast } from "sonner"
 import { useState } from "react"
 import type { Schedule } from "@/core/types/shedule.type"
 import useUpdateClassScheduleProp from "../hook/useUpdateClassScheduleProp"
-import AddScheduleForm from "@/components/specificComponent/addScheduleForm"
+import AddScheduleForm from "@/components/specificComponent/form/addScheduleForm"
 import useUpdateClassProp from "../hook/useUpdateClassProp"
-import UpdateClassForm from "@/components/specificComponent/updateClassForm"
+import UpdateClassForm from "@/components/specificComponent/form/updateClassForm"
 
 export default function EditDetailClassChild() {
     const { classId } = useParams()

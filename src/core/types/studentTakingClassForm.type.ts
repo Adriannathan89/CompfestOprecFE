@@ -10,6 +10,12 @@ export type StudentTakingClassForm = {
     class: ClassWithSubject
 }
 
+export type StudentTakingFormWithStudentDetail = StudentTakingClassForm & {
+    student: {
+        username: string,
+    }
+}
+
 export type DetailedClassConflict = {
     class1: ClassWithSchedule
     class2: ClassWithSchedule

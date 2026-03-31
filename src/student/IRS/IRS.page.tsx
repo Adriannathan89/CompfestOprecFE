@@ -1,5 +1,5 @@
 import { Outlet } from "react-router-dom";
-import NavbarMenuOnIRS from "../../components/specificComponent/navbarMenuOnIRS";
+import NavbarMenuOnIRS from "../../components/specificComponent/navbar/navbarMenuOnIRS";
 
 export default function IRSPage() {
     return (

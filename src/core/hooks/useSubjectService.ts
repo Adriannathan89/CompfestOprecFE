@@ -28,7 +28,7 @@ export function useSubjectService() {
             const res = await updateSubject(req, subjectId)
             toast.success(res.message)
         } catch (err: any) {
-            setError(err.message || "Failed to update subject")
+            toast.error(err.message || "Failed to update subject")
         } finally {
             setLoading(false)
         }
@@ -41,7 +41,7 @@ export function useSubjectService() {
             const res = await deleteSubject(subjectId)
             toast.success(res.message)
         } catch (err: any) {
-            setError(err.message || "Failed to delete subject")
+            toast.error(err.message || "Failed to delete subject")
         } finally {
             setLoading(false)
         }

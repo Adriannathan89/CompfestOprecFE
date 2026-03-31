@@ -1,3 +1,4 @@
+import type { StudentTakingFormWithStudentDetail } from "@/core/types/studentTakingClassForm.type"
 import { type Class, type ClassWithSchedule } from "../../types/Class.type"
 
 export async function createClass(req: Class) {
@@ -102,4 +103,35 @@ export async function getLecturerClasses() {
     }))
 
     return data
+}
+
+export async function getClassParticipants(classId: string) {
+    const connection = import.meta.env.VITE_GET_CLASS_PARTICIPANTS_ENDPOINT
+    const res = await fetch(connection + `/${classId}`, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('accessToken')}`
+        }
+    })
+
+    if(!res.ok) {
+        throw new Error(await res.json().then(json => json.message) || "Failed to get class participants")
+    }
+
+    const json = await res.json()
+    
+    const participants: StudentTakingFormWithStudentDetail[] = json.data.map((participantData: any) => ({
+        id: participantData.id,
+        classId: participantData.classId,
+        studentId: participantData.studentId,
+        takingPosition: participantData.takingPosition,
+        isFinalized: participantData.isFinalized,
+        createdAt: new Date(participantData.createdAt),
+        student: {
+            username: participantData.student.username
+        }
+    }))
+
+    return participants
 }

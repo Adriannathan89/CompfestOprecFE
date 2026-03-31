@@ -44,7 +44,7 @@ export default function AuthPage() {
                     )}
                     </div>
                     <div className="sm:hidden cursor-pointer" onClick={() => setIsLogin(!isLogin)}>
-                        <p>{isLogin ? "Sudah punya akun? " : "Belum punya akun? "}</p>
+                        <p>{isLogin ? "Belum Punya Akun? " : "Sudah Punya Akun? "}</p>
                     </div>
                     <Button
                         type="submit"
@@ -55,11 +55,11 @@ export default function AuthPage() {
                 </form>
             </div>
             <div className="flex flex-col justify-center items-center w-[600px] h-[560px] text-card-foreground p-4 max-sm:hidden">
-                <p className="text-3xl max-md:text-lg break-words max-xl:text-xl">Selamat Datang</p>
-                <p className="text-3xl max-md:text-lg break-words max-xl:text-xl">Di sistem informasi akademik</p>
+                <p className="text-3xl break-words max-xl:text-lg">Selamat Datang</p>
+                <p className="text-3xl break-words max-xl:text-lg">Di sistem informasi akademik</p>
                 <p className="text-xl mt-4 max-md:text-sm break-words max-xl:text-md">Silahkan login untuk melanjutkan</p>
                 <div className="flex flex-col justify-center mt-4">
-                    <p>{isLogin ? "Belum punya akun? " : "Sudah punya akun? "}</p>
+                    <p>{isLogin ? "Belum Punya Akun? " : "Sudah Punya Akun? "}</p>
                     <Button
                     className="bg-transparent text-primary border-1 border-sidebar-accent hover:bg-transparent rounded-3xl mt-[20px]"
                     onClick={() => setIsLogin(!isLogin)}
