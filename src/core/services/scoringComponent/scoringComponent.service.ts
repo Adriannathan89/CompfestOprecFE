@@ -22,7 +22,15 @@ export async function createScoringComponent(classId: string, name: string, weig
         throw new Error(await res.json().then(json => json.message) || "Failed to create scoring component")
     }
 
-    return { message: "Scoring component created successfully" }
+    const json = await res.json()
+    const newComponent: ScoringComponent = {
+        id: json.data.id,
+        classId,
+        name,
+        weight
+    }
+
+    return { message: "Scoring component created successfully", data: newComponent }
 }
 
 export async function getScoringComponents(classId: string) {
@@ -84,5 +92,13 @@ export async function updateScoringComponent(componentId: string, req: Partial<S
         throw new Error(await res.json().then(json => json.message) || "Failed to update scoring component")
     }
 
-    return { message: "Scoring component updated successfully" }
+    const json = await res.json()
+    const updatedComponent: ScoringComponent = {
+        id: json.data.id,
+        classId: json.data.classId,
+        name: json.data.name,
+        weight: json.data.weight
+    }
+
+    return { message: "Scoring component updated successfully", data: updatedComponent }
 }

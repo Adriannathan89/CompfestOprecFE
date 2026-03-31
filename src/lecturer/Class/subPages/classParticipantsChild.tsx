@@ -14,7 +14,6 @@ export default function ClassParticipantsChild() {
     if(loading) {
         return <div>Loading...</div>
     }
-    console.log(participants)
 
     return (
         <div className="w-full flex justify-center max-sm:px-2">
