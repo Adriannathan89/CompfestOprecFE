@@ -5,9 +5,9 @@ import { toast } from "sonner"
 import { useState } from "react"
 import type { Schedule } from "@/core/types/shedule.type"
 import useUpdateClassScheduleProp from "../hook/useUpdateClassScheduleProp"
-import AddScheduleForm from "@/components/specificComponent/addScheduleForm"
+import AddScheduleForm from "@/components/specificComponent/form/addScheduleForm"
 import useUpdateClassProp from "../hook/useUpdateClassProp"
-import UpdateClassForm from "@/components/specificComponent/updateClassForm"
+import UpdateClassForm from "@/components/specificComponent/form/updateClassForm"
 
 export default function EditDetailClassChild() {
     const { classId } = useParams()
@@ -38,7 +38,7 @@ export default function EditDetailClassChild() {
                     updateAllSchedule();
                     setUpdateMode(false);
                 }}  
-                className="min-w-[400px] flex flex-col gap-[20px]">
+                className="w-full md:max-w-[400px] flex flex-col gap-[20px]">
                     <UpdateClassForm updatedData={updatedData} handleInputChange={handleClassInputChange} updateMode={updateMode} />
 
                     <p className="px-3">Jadwal Kelas: </p>
@@ -46,7 +46,7 @@ export default function EditDetailClassChild() {
                         <p className="px-3 text-muted-foreground">Tidak ada jadwal kelas</p>
                     ) : (
                         schedulesState.map((schedule, index) => (
-                            <div className="flex ml-16" key={schedule.id}>
+                            <div className="flex ml-16 max-sm:ml-2" key={schedule.id}>
                                 <p>{index + 1}.</p>
                                 <AddScheduleForm
                                     shedule={schedule}
@@ -66,7 +66,7 @@ export default function EditDetailClassChild() {
                                     onClick={() => addNewSchedule(
                                         { classId: String(classId), classroom: "A101", dayOfWeek: 1, startTime: "08:00", endTime: "10:00" } as Schedule)
                                     }
-                                    className="ml-auto w-[160px] py-2 mt-2 bg-secondary text-secondary-foreground hover:bg-secondary/80 px-2 py-1 rounded-md cursor-pointer">
+                                    className="w-[160px] py-2 mt-2 bg-secondary text-secondary-foreground hover:bg-secondary/80 px-2 py-1 rounded-md cursor-pointer">
                                     Tambah Jadwal
                                 </button>
                             </div>
@@ -82,7 +82,7 @@ export default function EditDetailClassChild() {
                 </form>
             </div>
 
-            <div className="flex justify-end gap-[40px] px-40 py-4">
+            <div className="flex justify-end gap-[40px] max-sm:px-0 max-sm:gap-[20px] px-40 py-4">
                 <button
                     hidden={updateMode}
                     onClick={() => {

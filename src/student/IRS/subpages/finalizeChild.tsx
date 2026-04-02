@@ -1,6 +1,6 @@
 import { useFetchEnrollmentForm, useFinalizeEnrollment } from "@/core/hooks/StudentTakingForm.hook"
 import { toast } from "sonner"
-import EnrollmentFormDisplayCard from "@/components/specificComponent/enrollmentFormDisplayCard"
+import EnrollmentFormDisplayCard from "@/components/specificComponent/displayCard/enrollmentFormDisplayCard"
 import { useGetConflictingClasses } from "@/core/hooks/StudentTakingForm.hook"
 import { Button } from "@/components/ui/button"
 
@@ -74,20 +74,20 @@ export default function FinalizeIrsChild() {
             <div className="flex flex-col gap-8 w-full xl:max-w-[904px] max-xl:items-center max-xl:justify-center max-md:text-xs">
                 <div className="px-4 flex w-full max-w-[904px] h-[52px] 
                 rounded-md bg-card/90 max-md:text-sm max-sm:text-xs">
-                    <div className="flex items-center w-[20%]">
-                        <p className="text-sm font-medium text-card-foreground">Kode MK</p>
+                    <div className="flex items-center w-[20%] justify-center">
+                        <p className="text-sm max-sm:text-xs font-medium text-card-foreground">Kode MK</p>
                     </div>
-                    <div className="flex items-center w-[20%]">
-                        <p className="text-sm font-medium text-card-foreground">Nama MK</p>
+                    <div className="flex items-center w-[20%] justify-center">
+                        <p className="text-sm max-sm:text-xs font-medium text-card-foreground">Nama MK</p>
                     </div>
-                    <div className="flex items-center w-[20%]">
-                        <p className="text-sm font-medium text-card-foreground">SKS</p>
+                    <div className="flex items-center w-[20%] justify-center">
+                        <p className="text-sm max-sm:text-xs font-medium text-card-foreground">SKS</p>
                     </div>
-                    <div className="flex items-center w-[20%]">
-                        <p className="text-sm font-medium text-card-foreground">Kelas</p>
+                    <div className="flex items-center w-[20%] justify-center">
+                        <p className="text-sm max-sm:text-xs font-medium text-card-foreground">Kelas</p>
                     </div>
-                    <div className="flex items-center w-[20%] ml-4">
-                        <p className="text-sm font-medium text-card-foreground">Tanggal Pengisian</p>
+                    <div className="flex items-center w-[20%] ml-4 justify-center">
+                        <p className="text-sm max-sm:text-xs font-medium text-card-foreground">Tanggal Pengisian</p>
                     </div>
                 </div>
                 <div className="flex flex-col gap-6 w-full xl:max-w-[904px]">

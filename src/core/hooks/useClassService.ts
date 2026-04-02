@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react"
-import { createClass, deleteClass, getLecturerClasses, updateClass } from "@/core/services/class/class.service"
+import { createClass, deleteClass, getClassParticipants, getLecturerClasses, updateClass } from "@/core/services/class/class.service"
 import { type Class, type ClassWithSchedule } from "@/core/types/Class.type"
 import { toast } from "sonner"
 import { getClassById } from "../services/class/classDetailed.service"
+import type { StudentTakingClassFormDetailed } from "../types/studentTakingClassForm.type"
 
 export function useClassService() {
     const [loading, setLoading] = useState(false)
@@ -83,7 +84,7 @@ export function useGetClassDetail(classId: string) {
         const fetchClassDetail = async () => {
             setLoading(true)
             setError(null)
-            
+
             getClassById(classId).then(res => {
                 setClassDetail(res)
             }).catch(err => {
@@ -96,4 +97,28 @@ export function useGetClassDetail(classId: string) {
     }, [classId])
 
     return { classDetail, loading, error }
+}
+
+export function useGetClassParticipants(classId: string) {
+    const [participants, setParticipants] = useState<StudentTakingClassFormDetailed[] | null>(null)
+    const [loading, setLoading] = useState(false)
+    const [error, setError] = useState<string | null>(null)
+
+    useEffect(() => {
+        const fetchParticipants = async () => {
+            setLoading(true)
+            setError(null)
+
+            getClassParticipants(classId).then(res => {
+                setParticipants(res)
+            }).catch(err => {
+                setError(err.message || "Failed to fetch class participants")
+            }).finally(() => {
+                setLoading(false)
+            })
+        }
+        fetchParticipants()
+    }, [classId])
+
+    return { participants, loading, error }
 }

@@ -5,7 +5,7 @@ import type { ClassWithSchedule } from "@/core/types/Class.type";
 import { updateSchedule } from "@/core/services/schedule/shedule.service";
 
 export default function useUpdateClassScheduleProp(classDetail: ClassWithSchedule | null) {
-    const { createNewSchedule, deleteCurrentSchedule } = useScheduleService()
+    const {createNewSchedule, deleteCurrentSchedule } = useScheduleService()
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
     const [schedulesState, setShedules] = useState<Schedule[]>([]);

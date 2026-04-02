@@ -26,7 +26,7 @@ export default function ToggleTheme() {
             role="switch"
             aria-checked={theme === "light"}
             aria-label="Toggle light and dark theme"
-            className="group inline-flex items-center gap-2 mr-[20px]"
+            className="group inline-flex items-center gap-2 mr-[20px] max-sm:mr-[4px]"
         >
             <span
                 className={`relative inline-flex h-8 w-15 items-center rounded-full border transition-all duration-300 ${theme === "light"

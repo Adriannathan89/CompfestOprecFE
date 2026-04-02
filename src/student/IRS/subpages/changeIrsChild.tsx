@@ -1,4 +1,4 @@
-import SelectClassToEnrollForm from "@/components/specificComponent/selectClassToEnrollForm"
+import SelectClassToEnrollForm from "@/components/specificComponent/form/selectClassToEnrollForm"
 import { useFetchSubjectsWithDetails } from "@/core/hooks/useSubjectService"
 import { toast } from "sonner"
 import { useChangeIRSProp } from "../hook/useChangeIRSProp"
@@ -27,7 +27,7 @@ export default function RootIrsChild() {
 
 
     return (
-        <div className="px-10 flex flex-col py-4 mt-6 max-xl:text-xs">
+        <div className="px-10 flex flex-col py-4 mt-6 max-xl:text-xs max-sm:px-0 max-sm:gap-2">
             <div className="px-10 flex w-full bg-card py-3 rounded-md">
                 <p className="flex justify-start w-1/3">MataKuliah</p>
                 <p className="flex justify-center w-1/3">Jadwal</p>

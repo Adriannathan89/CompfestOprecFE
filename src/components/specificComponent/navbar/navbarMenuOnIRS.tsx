@@ -4,7 +4,7 @@ export default function NavbarMenuOnIRS() {
     const router = useNavigate()
 
     return (
-        <div className="flex gap-[40px]">
+        <div className="flex gap-[40px] max-sm:gap-[20px]">
             <button
             onClick={() => router("/student/irs")}
             className="border-b-1 border-transparent hover:border-b-1 hover:border-card-foreground text-foreground">

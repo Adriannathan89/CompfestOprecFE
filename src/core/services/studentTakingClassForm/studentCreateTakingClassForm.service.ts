@@ -1,4 +1,4 @@
-import type { StudentTakingClassForm } from "@/core/types/studentTakingClassForm.type"
+import type { StudentTakingClassForm,  StudentTakingClassFormDetailed } from "@/core/types/studentTakingClassForm.type"
 
 export async function createStudentTakingClassForm(classId: string) {
     const connection = import.meta.env.VITE_ENROLL_CLASS_ENDPOINT
@@ -84,3 +84,40 @@ export async function getEnrollmentForm() {
     }))
     return {message: "Enrollment form retrieved successfully", data: data}
 }
+
+export async function getEnrollmentFormDetail(formId: string) {
+    const connection = `${import.meta.env.VITE_GET_ENROLLMENT_FORM_DETAIL_ENDPOINT}/${formId}`
+
+    const res = await fetch(connection, {
+        method: 'GET',
+        headers: {
+            "Content-Type": "application/json",
+            'Authorization': `Bearer ${localStorage.getItem('accessToken')}`
+        }
+    })
+
+    if(!res.ok) {
+        throw new Error(await res.json().then(json => json.message) || "Failed to get enrollment form detail")
+    }
+
+    const json = await res.json()
+
+    const formData = json.data
+
+    const enrollmentFormDetail: StudentTakingClassFormDetailed = {
+        id: formData.id,
+        classId: formData.classId,
+        studentId: formData.studentId,
+        takingPosition: formData.takingPosition,
+        isFinalized: formData.isFinalized,
+        createdAt: new Date(formData.createdAt),
+        class: {
+            name: formData.class.name,
+        },
+        student: {
+            username: formData.student.username
+        },
+    }
+    return {message: "Enrollment form detail retrieved successfully", data: enrollmentFormDetail}
+}
+

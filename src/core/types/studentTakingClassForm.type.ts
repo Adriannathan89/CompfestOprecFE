@@ -10,6 +10,21 @@ export type StudentTakingClassForm = {
     class: ClassWithSubject
 }
 
+export type StudentTakingClassFormDetailed = {
+    id: string,
+    studentId: string,
+    classId: string,
+    takingPosition: number,
+    isFinalized: boolean,
+    createdAt: Date,
+    class: {
+        name: string,
+    }
+    student: {
+        username: string,
+    }
+}
+
 export type DetailedClassConflict = {
     class1: ClassWithSchedule
     class2: ClassWithSchedule

@@ -1,7 +1,7 @@
-import { createStudentTakingClassForm, deleteStudentTakingClassForm, getEnrollmentForm } from "../services/studentTakingClassForm/studentCreateTakingClassForm.service"
+import { createStudentTakingClassForm, deleteStudentTakingClassForm, getEnrollmentForm, getEnrollmentFormDetail } from "../services/studentTakingClassForm/studentCreateTakingClassForm.service"
 import { finalizeMyEnrollment, getClassConflict } from "../services/studentTakingClassForm/finalizeForm.service"
 import { toast } from "sonner"
-import type { DetailedClassConflict, StudentTakingClassForm } from "../types/studentTakingClassForm.type"
+import type { DetailedClassConflict, StudentTakingClassForm, StudentTakingClassFormDetailed } from "../types/studentTakingClassForm.type"
 import { useEffect, useState } from "react"
 
 export function useCreateAndDeleteStudentTakingClass() {
@@ -89,4 +89,29 @@ export function useFetchEnrollmentForm() {
     }, [])
 
     return { enrollmentForm, loading, error }
+}
+
+export function useFetchEnrollmentFormDetail(studentTakingFormId: string) {
+    const [enrollmentFormDetail, setEnrollmentFormDetail] = useState<StudentTakingClassFormDetailed | null>(null)
+    const [loading, setLoading] = useState(false)
+    const [error, setError] = useState<string | null>(null)
+
+    useEffect(() => {
+        const fetchEnrollmentFormDetail = async () => {
+            setLoading(true)
+            setError(null)
+
+            try {
+                const res = await getEnrollmentFormDetail(studentTakingFormId)
+                setEnrollmentFormDetail(res.data)
+            } catch (err: any) {
+                setError(err.message || "Failed to fetch enrollment form detail")
+            } finally {
+                setLoading(false)
+            }
+        }
+        fetchEnrollmentFormDetail()
+    }, [studentTakingFormId])
+
+    return { enrollmentFormDetail, loading, error }
 }
