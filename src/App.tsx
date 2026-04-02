@@ -11,6 +11,8 @@ import { ClassRoutes } from './routeRegister/class.route'
 import { IRSRoutes } from './routeRegister/irs.route'
 import { AcademicRoutes } from './routeRegister/academic.route'
 import { ScheduleRoutes } from './routeRegister/shedule.route'
+import { StudentFormRoutes } from './routeRegister/studentFormroute'
+import { StudentDetailedFormRoute } from './routeRegister/studentDetailedFormRoute'
 
 export default function App() {
   return (
@@ -24,6 +26,7 @@ export default function App() {
           <Route index element={<StudentDashboardPage />} />
           { AcademicRoutes }
           { IRSRoutes }
+          { StudentDetailedFormRoute }
         </Route>
 
         <Route path='/lecturer' element={<LecturerProtectedPage />}>
@@ -32,6 +35,7 @@ export default function App() {
           { ClassRoutes }
           { SubjectRoutes }
           { CoursesRoutes }
+          { StudentFormRoutes}
           </Route>
       </Routes>
     </BrowserRouter>

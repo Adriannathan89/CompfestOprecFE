@@ -1,4 +1,4 @@
-import type { StudentTakingFormWithStudentDetail } from "@/core/types/studentTakingClassForm.type"
+import type { StudentTakingClassFormDetailed } from "@/core/types/studentTakingClassForm.type"
 import { type Class, type ClassWithSchedule } from "../../types/Class.type"
 
 export async function createClass(req: Class) {
@@ -121,7 +121,7 @@ export async function getClassParticipants(classId: string) {
 
     const json = await res.json()
     
-    const participants: StudentTakingFormWithStudentDetail[] = json.data.map((participantData: any) => ({
+    const participants: StudentTakingClassFormDetailed[] = json.data.map((participantData: any) => ({
         id: participantData.id,
         classId: participantData.classId,
         studentId: participantData.studentId,

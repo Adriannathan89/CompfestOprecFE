@@ -3,7 +3,7 @@ import { createClass, deleteClass, getClassParticipants, getLecturerClasses, upd
 import { type Class, type ClassWithSchedule } from "@/core/types/Class.type"
 import { toast } from "sonner"
 import { getClassById } from "../services/class/classDetailed.service"
-import type { StudentTakingFormWithStudentDetail } from "../types/studentTakingClassForm.type"
+import type { StudentTakingClassFormDetailed } from "../types/studentTakingClassForm.type"
 
 export function useClassService() {
     const [loading, setLoading] = useState(false)
@@ -100,7 +100,7 @@ export function useGetClassDetail(classId: string) {
 }
 
 export function useGetClassParticipants(classId: string) {
-    const [participants, setParticipants] = useState<StudentTakingFormWithStudentDetail[] | null>(null)
+    const [participants, setParticipants] = useState<StudentTakingClassFormDetailed[] | null>(null)
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState<string | null>(null)
 

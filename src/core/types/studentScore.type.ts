@@ -2,8 +2,9 @@ export type StudentScore = {
     id: string,
     studentTakingClassFormId: string,
     scoringComponentId: string,
+    name: string,
     isPublished: boolean,
-    percentage: number,
+    percentage: number | string,
 }
 
 export type StudentScoringCalculation = {
@@ -11,7 +12,8 @@ export type StudentScoringCalculation = {
     FinalGradePercentage: number,
     ScoringComponentDetails: {
         scoringComponentName: string,
-        percentage: number,
+        percentage: number | string,
+        weight: number,
     }[]
     message: string,
 }
